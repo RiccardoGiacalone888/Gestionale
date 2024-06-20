@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Prodotti</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Prodotti</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+            <th>Quantità Disponibile</th>
+            <th>Azioni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prodotto : ${prodotti}">
+            <td th:text="${prodotto.id}"></td>
+            <td th:text="${prodotto.nome}"></td>
+            <td th:text="${prodotto.descrizione}"></td>
+            <td th:text="${prodotto.prezzo}"></td>
+            <td th:text="${prodotto.quantitaDisponibile}"></td>
+            <td>
+                <a th:href="@{/prodotti/{id}/modifica(id=${prodotto.id})}" class="btn btn-primary btn-sm">Modifica</a>
+                <a th:href="@{/prodotti/{id}/elimina(id=${prodotto.id})}" class="btn btn-danger btn-sm">Elimina</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/prodotti/nuovo}" class="btn btn-success">Nuovo Prodotto</a>
+</div>
+</body>
+</html>

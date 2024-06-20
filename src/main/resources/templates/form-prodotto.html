@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Prodotto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Form Prodotto</h1>
+    <form th:action="@{/prodotti/nuovo}" method="post" th:object="${prodotto}">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" th:field="*{nome}">
+        </div>
+        <div class="form-group">
+            <label for="descrizione">Descrizione</label>
+            <textarea class="form-control" id="descrizione" th:field="*{descrizione}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="prezzo">Prezzo</label>
+            <input type="number" step="0.01" class="form-control" id="prezzo" th:field="*{prezzo}">
+        </div>
+        <div class="form-group">
+            <label for="quantitaDisponibile">Quantità Disponibile</label>
+            <input type="number" class="form-control" id="quantitaDisponibile" th:field="*{quantitaDisponibile}">
+        </div>
+        <button type="submit" class="btn btn-primary">Salva</button>
+    </form>
+</div>
+</body>
+</html>

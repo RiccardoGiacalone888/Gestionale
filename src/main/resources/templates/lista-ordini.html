@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Ordini</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Ordini</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Totale</th>
+            <th>Cliente</th> <th colspan="2">Azioni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ordine : ${ordini}">
+            <td th:text="${ordine.id}"></td>
+            <td th:text="${ordine.data}"></td>
+            <td th:text="${ordine.totale}"></td>
+            <td th:text="${ordine.cliente.nome} + ' ' + ${ordine.cliente.cognome}"></td>
+            <td>
+                <a th:href="@{/ordini/{id}/modifica(id=${ordine.id})}" class="btn btn-primary btn-sm">Modifica</a>
+            </td>
+            <td>
+                <a th:href="@{/ordini/{id}/elimina(id=${ordine.id})}" class="btn btn-danger btn-sm">Elimina</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/ordini/nuovo}" class="btn btn-success">Nuovo Ordine</a>
+</div>
+</body>
+</html>
